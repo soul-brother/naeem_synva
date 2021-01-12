@@ -2,7 +2,7 @@
 "name": "SUPERPWA",
 "short_name": "SUPERPWA",
 "start_url": "/",
-"scope":"/",
+"scope":"/naeem_synva/",
 "display": "standalone",
 "icons": [
  {
