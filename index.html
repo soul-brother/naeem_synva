@@ -103,13 +103,13 @@
 			height: 70px;
 			width: 70px;
 			border:1.5px solid #f5f6fa;
-		
+
 		}
 		.user_img_msg{
 			height: 40px;
 			width: 40px;
 			border:1.5px solid #f5f6fa;
-		
+
 		}
 	.img_cont{
 			position: relative;
@@ -222,7 +222,7 @@
 	}
 	.action_menu ul li i{
 		padding-right: 10px;
-	
+
 	}
 	.action_menu ul li:hover{
 		cursor: pointer;
@@ -248,7 +248,7 @@
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
 	</head>
-	<!--Coded With Love By Mutiullah Samim-->
+	<!--Coded With Love By Mutiullah Sebastienm-->
 	<body>
 		<div class="container-fluid h-100">
 			<div class="row justify-content-center h-100">
@@ -270,8 +270,8 @@
 									<span class="online_icon"></span>
 								</div>
 								<div class="user_info">
-									<span>Khalid</span>
-									<p>Kalid is online</p>
+									<span>Emmanuelle</span>
+									<p>Emmanuelle is online</p>
 								</div>
 							</div>
 						</li>
@@ -282,8 +282,8 @@
 									<span class="online_icon offline"></span>
 								</div>
 								<div class="user_info">
-									<span>Taherah Big</span>
-									<p>Taherah left 7 mins ago</p>
+									<span>Thomas Big</span>
+									<p>Thomas left 7 mins ago</p>
 								</div>
 							</div>
 						</li>
@@ -294,8 +294,8 @@
 									<span class="online_icon"></span>
 								</div>
 								<div class="user_info">
-									<span>Sami Rafi</span>
-									<p>Sami is online</p>
+									<span>Sebastien Rafi</span>
+									<p>Sebastien is online</p>
 								</div>
 							</div>
 						</li>
@@ -318,7 +318,7 @@
 									<span class="online_icon offline"></span>
 								</div>
 								<div class="user_info">
-									<span>Rashid Samim</span>
+									<span>Rashid Sebastienm</span>
 									<p>Rashid left 50 mins ago</p>
 								</div>
 							</div>
@@ -336,7 +336,7 @@
 									<span class="online_icon"></span>
 								</div>
 								<div class="user_info">
-									<span>Chat with Khalid</span>
+									<span>Chat with Emmanuelle</span>
 									<p>1767 Messages</p>
 								</div>
 								<div class="video_cam">
@@ -360,13 +360,13 @@
 									<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
 								</div>
 								<div class="msg_cotainer">
-									Hi, how are you samim?
+									Hi, how are you Sebastienm?
 									<span class="msg_time">8:40 AM, Today</span>
 								</div>
 							</div>
 							<div class="d-flex justify-content-end mb-4">
 								<div class="msg_cotainer_send">
-									Hi Khalid i am good tnx how about you?
+									Hi Emmanuelle i am good tnx how about you?
 									<span class="msg_time_send">8:55 AM, Today</span>
 								</div>
 								<div class="img_cont_msg">
@@ -421,21 +421,20 @@
 							</div>
 						</div>
 						<div class="card-footer">
-											
-								
-								<form id="form"class="form-group">
+
+
+								<form id="form" class="form-group">
   									<div class="form-group-append">
     									<label for="exampleInputEmail1"></label>
     									<input type="textarea" class="form-control type_msg" placeholder="Type your message..." id="message">
     								</div>
     									<div class="form-group-append">
-    									<button type="submit" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button> 
-    									</div>									
-    															    								
+    									<button type="submit" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+    									</div>
 								</form>
 
-								
-							
+
+
 						</div>
 					</div>
 				</div>
@@ -457,27 +456,27 @@ $('#action_menu_btn').click(function(){
             if('serviceWorker' in navigator){
                 navigator.serviceWorker.register('sw.js')
             }
+/*The part where we write in js to take the information from the form and put it into the cache*/
+let form=document.getElementById("form"); /*gets input from form */
+let name=document.getElementById("message"); /*gets input from the message */
 
-let form=document.getElementById("form");
-let name=document.getElementById("message");
-
-form.addEventListener('submit',(event)=>{
+form.addEventListener('submit',(event)=>{ /* when the button is clicked, the page does not refresh and the data is stored in the storage (the name stored as the key is the message which is the value) */
                 event.preventDefault();
-               
+
                 let storage=name.value;
                 localStorage.setItem('name', storage);})
 
 ;
-document.getElementById("rendu") .innerHTML=localStorage.getItem('name');
+document.getElementById("rendu") .innerHTML=localStorage.getItem('name'); /*here the data is stored in the local storage based on what is typed in the chat field*/
 
 if (window.Notification && window.Notification !== 'denied') {
             Notification.requestPermission(perm => {
 // on vérifie ensuite que l’utilisateur a accepté l’affichage des notifications
                 if (perm === 'granted') {
-//on crée une notification 
+//on crée une notification
                   const notif= new Notification ('bienvenue sur la messagerie Catmail')
                 } else {
-//si l’utilisateur a refusé de recevoir les notifications, on affiche un message dans //la console 
+//si l’utilisateur a refusé de recevoir les notifications, on affiche un message dans //la console
                     console.log('autorisation de recevoir des notifications refusée');
                 }
             })
