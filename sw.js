@@ -1,33 +1,43 @@
-const synvaChat = "synvaChat"
-const assets = [
-  "/",
-  "/index.html",
-  "/css/style.css",
-  "/js/script.js",
-  "/catmail.png",
-]
 
-self.addEventListener("install", installEvent => {
-  installEvent.waitUntil(
-    caches.open(staticDevCoffee).then(cache => {
-      cache.addAll(assets)
-    })
-  )
+self.addEventListener('install', evt=>{
+    caches.open('lpdwca-PWA').then(
+                cache=>{
+                    cache.addAll([
+                        'index.html',
+                        'sw.js',
+                        ]);
+             })
+
+});
+
+self.addEventListener('activate', evt => {
+    console.log(evt);
+});
+self.addEventListener('fetch', evt=>{
+    if (!(evt.request.url.indexOf('http') === 0)) return; 
+    evt.respondWith(
+        caches.match(evt.request).then(rep=>{
+            if(rep){
+                //si la page existe on la retourne
+                return rep;
+            }
+            /*si la page n'existe pas, on utilise la méthode network    fallback pour ouvrir l'instance de cache et enregistrer la page dans le cache pour les futurs requêtes
+            */
+            return fetch(evt.request).then(
+                newResponse=>{
+                    caches.open('lpdwca-PWA').then(
+                        cache=>cache.put(evt.request, newResponse
+                        ));
+                        /*puisque une réponse ne peut être utilisé 2 fois, si on a besoin de l'utiliser une seconde fois, on doit le cloner
+                        */
+                        return newResponse.clone();
+                })
+        })
+    )
+
 })
 
-self.addEventListener("fetch", fetchEvent => {
-  fetchEvent.respondWith(
-    caches.match(fetchEvent.request).then(res => {
-      return res || fetch(fetchEvent.request)
-    })
-  )
-})
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function() {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then(res => console.log("service worker registered"))
-      .catch(err => console.log("service worker not registered", err))
-  })
-}
+self.registration.showNotification('notification SW', {
+    body:'Notification depuis mon service workers'
+});
