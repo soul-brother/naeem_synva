@@ -1,4 +1,3 @@
-
 self.addEventListener('install', evt=>{
     caches.open('lpdwca-PWA').then(
                 cache=>{
