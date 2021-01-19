@@ -1,12 +1,11 @@
 {
-"name": "SUPERPWA",
-"short_name": "SUPERPWA",
-"start_url": "/",
+"name": "SYNVA Chat",
+"short_name": "SYNVA",
+"start_url": "index.html",
 "display": "standalone",
-"background_color": "FDFDFD",
+"background_color": "#4285f4",
 "theme_color": "#4285f4",
-"orientation": "poirtrait-primary",
-"scope":"/naeem_synva/",
+"scope":"/",
 "icons": [
  {
   "src": "icon/android-icon-192x192-dunplab-manifest-33212.png",
