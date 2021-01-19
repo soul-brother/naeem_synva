@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <!-- This  has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>Elegant Bootstrap 4  message chat box template - Bootsnipp.com</title>
+    <title>SYNVA that</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#4b5480">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -444,11 +444,16 @@ $('#action_menu_btn').click(function(){
 });
 	});
 </script>
-<script src="/naeem_synva/sw.js"></script>
-<script> if('serviceWorker' in navigator){
-
-navigator.serviceWorker.register('/naeem_synva/sw.js')
-}
+<script src="/sw.js"></script>
+<script>   if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+          .then(function(registration) {
+                console.log('Service Worker Registered');
+          });
+        navigator.serviceWorker.ready.then(function(registration) {
+           console.log('Service Worker Ready');
+        });
+      }
 
 </script>
 </body>
