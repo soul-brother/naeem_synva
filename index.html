@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>MessagerieCatmail</title>git
+    <title>MessagerieCatmail</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#4b5480">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -103,13 +103,13 @@
 			height: 70px;
 			width: 70px;
 			border:1.5px solid #f5f6fa;
-		
+
 		}
 		.user_img_msg{
 			height: 40px;
 			width: 40px;
 			border:1.5px solid #f5f6fa;
-		
+
 		}
 	.img_cont{
 			position: relative;
@@ -222,7 +222,7 @@
 	}
 	.action_menu ul li i{
 		padding-right: 10px;
-	
+
 	}
 	.action_menu ul li:hover{
 		cursor: pointer;
@@ -253,12 +253,12 @@
 		<div class="container-fluid h-100">
 			<div class="row justify-content-center h-100">
 				<div class="card-header">
-							<img src="catmail.png" alt="logo"> 
+							<img src="catmail.png" alt="logo">
 						</div>
-				
+
 				<div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
 					<div class="card-header">
-						
+
 						<div class="input-group">
 							<input type="text" placeholder="Search..." name="" class="form-control search">
 							<div class="input-group-prepend">
@@ -426,21 +426,21 @@
 							</div>
 						</div>
 						<div class="card-footer">
-											
-								
+
+
 								<form id="form"class="form-group">
   									<div class="form-group-append">
     									<label for="exampleInputEmail1"></label>
     									<input type="textarea" class="form-control type_msg" placeholder="Type your message..." id="message">
     								</div>
     									<div class="form-group-append">
-    									<button type="submit" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button> 
-    									</div>									
-    															    								
+    									<button type="submit" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+    									</div>
+
 								</form>
 
-								
-							
+
+
 						</div>
 					</div>
 				</div>
@@ -468,30 +468,30 @@ let message=document.getElementById("message");
 
 form.addEventListener('submit',(event)=>{
                 event.preventDefault();
-               
+
                 let messages=[];
-                
+
                 if(localStorage.getItem("messages")){
                   messages= JSON.parse(localStorage.getItem("messages"));
                 }
-            
-                let storage={                    
+
+                let storage={
                     'message':message.value
                 }
                 messages.push(storage);
                 console.log(messages);
                 localStorage.setItem("messages", JSON.stringify(messages));
-               
+
             });
             let rendu= document.getElementById("rendu");
             if(localStorage.getItem('messages')){
                 let smessages=JSON.parse(localStorage.getItem('messages'));
                 console.log(smessages);
-                
+
                 smessages.forEach(element=>{
                 let p=document.createElement('P');
                  p.innerHTML=element.message;
-                rendu.appendChild(p);  
+                rendu.appendChild(p);
             });
             }
 
@@ -499,10 +499,10 @@ if (window.Notification && window.Notification !== 'denied') {
             Notification.requestPermission(perm => {
 // on vérifie ensuite que l’utilisateur a accepté l’affichage des notifications
                 if (perm === 'granted') {
-//on crée une notification 
+//on crée une notification
                   const notif= new Notification ('bienvenue sur la messagerie Catmail')
                 } else {
-//si l’utilisateur a refusé de recevoir les notifications, on affiche un message dans //la console 
+//si l’utilisateur a refusé de recevoir les notifications, on affiche un message dans //la console
                     console.log('autorisation de recevoir des notifications refusée');
                 }
             })
